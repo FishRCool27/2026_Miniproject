@@ -22,10 +22,10 @@ public class Climber extends SubsystemBase {
    */
   public Command deploy() {
    
-    climberMotor.set(.8);
+    return climberMotor.set(.8);
   }
   public Command stow() {
-    climberMotor.set(-.8);
+    return climberMotor.set(-.8);
     }
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).
