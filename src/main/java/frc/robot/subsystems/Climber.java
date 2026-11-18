@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -10,40 +6,22 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Climber extends SubsystemBase {
-  
- /** Creates a new ExampleSubsystem. */
- private final TalonFX climberMotor = new TalonFX(7); 
+
+
+ private final TalonFX climberMotor = new TalonFX(7); //assigns "climberMotor" to a port on the PDH.
  public Climber() {}
 
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
-  public Command deploy() {
-   
-    return climberMotor.set(.8);
+  public Command deploy() {// deploys the climber, runs until the button is released
+    return this.runEnd(
+      ()-> climberMotor.set(0.8),
+      ()->climberMotor.set(0.0)
+    );
   }
-  public Command stow() {
-    return climberMotor.set(-.8);
+  public Command stow() {//stows the climber, runs until the button is released
+    return this.runEnd(
+      ()-> climberMotor.set(-0.8),
+      ()->climberMotor.set(0.0)
+    );
     }
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
-  public boolean exampleCondition() {
-    // Query some boolean state, such as a digital sensor.
-    return false;
-  }
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
-
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
-  }
 }

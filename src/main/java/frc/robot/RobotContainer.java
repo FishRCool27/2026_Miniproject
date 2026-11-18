@@ -1,12 +1,6 @@
-/// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Climber;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -19,11 +13,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
- // private Climber climber;
-    private Climber climber;
+      private Climber climber;
 
-  // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
@@ -43,28 +34,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    
-      m_driverController.povUp().whileTrue(climber.deploy());
-      m_driverController.povDown().whileTrue(climber.stow());
-
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
-    //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+      m_driverController.povUp().whileTrue(climber.deploy());//Deploys Climber when D-pad up is pressed
+      m_driverController.povDown().whileTrue(climber.stow());//Stows Climber when D-pad down is pressed
   }
-
-  public Command getAutonomousCommand() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getAutonomousCommand'");
-  }
-
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  //public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    //return Autos.exampleAuto(m_exampleSubsystem);
-  //}
 }
