@@ -23,13 +23,13 @@ public class Climber extends SubsystemBase {
  
   public Command deploy() {// deploys the climber, runs until the button is released
     return this.runEnd(
-      ()-> climberMotor.set(0.8),
+      ()-> climberMotor.set(0.6),
       ()->climberMotor.set(0.0)
     );
   }
   public Command stow() {//stows the climber, runs until the button is released
     return this.runEnd(
-      ()-> climberMotor.set(-0.8),
+      ()-> climberMotor.set(-0.6),
       ()->climberMotor.set(0.0)
     );
     }
